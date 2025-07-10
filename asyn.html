@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>setInterval + console.log Demo</title>
+</head>
+<body>
+
+  <h2>Messages repeat every 3 seconds 🕒</h2>
+  <button onclick="startInterval()">Start</button>
+  <button onclick="stopInterval()">Stop</button>
+
+  <div id="output" style="margin-top: 20px; font-size: 1.2em;"></div>
+
+  <script>
+    let intervalId;
+    let count = 1;
+
+    function startInterval() {
+      if (intervalId) {
+        console.log("⚠ Interval already running.");
+        return;
+      }
+
+      console.log("▶ Starting interval...");
+
+      intervalId = setInterval(() => {
+        const message = `🔁 Message ${count}`;
+        document.getElementById('output').innerHTML += message + "<br>";
+        console.log(`✅ Console: ${message}`);
+        count++;
+      }, 3000); // Runs every 3 seconds
+    }
+
+    function stopInterval() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        console.log("⏹ Interval stopped.");
+        intervalId = null;
+      } else {
+        console.log("❌ No interval to stop.");
+      }
+    }
+  </script>
+
+</body>
+</html

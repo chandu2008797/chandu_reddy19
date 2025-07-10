@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Synchronous code</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Synchronous code</h1>
+  <button onclick="showMessages()">click me</button>
+  <p id="demo"></p>
+
+  <script>
+    function showMessages() {
+      const output = document.getElementById("output");
+      alert("This is an alert on the second line!"); 
+      output.innerHTML = "Step 1:Starting...<br>";
+
+     
+      let start = Date.now();
+      while (Date.now() - start < 3000) {
+      }
+
+      output.innerHTML += "Step 2: Finished blocking task<br>";
+      output.innerHTML += "Step 3: Done!";
+    }
+  </script>
+</body>
+</html>

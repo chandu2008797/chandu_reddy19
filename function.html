@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Function Call with Async/Await</title>
+</head>
+<body>
+  <h2>Async Function Calling Another Function</h2>
+  <button onclick="getData()">Start Process</button>
+  <p id="output">Click the button to begin...</p>
+
+  <script>
+    // Simulated async function
+    function fetchData() {
+      return new Promise((resolve, reject) => {
+        const success = true; // Change to false to simulate error
+        setTimeout(() => {
+          if (success) {
+            resolve("📦 Data received from server.");
+          } else {
+            reject("❌ Error: Unable to fetch data.");
+          }
+        }, 1500);
+      });
+    }
+
+    // Regular function that processes the data
+    function processData(data) {
+      return 🔍 Processed Result: ${data.toUpperCase()};
+    }
+
+    // Async function that calls fetchData and processData
+    async function getData() {
+      const output = document.getElementById("output");
+      output.textContent = "⏳ Fetching and processing data...";
+      try {
+        const rawData = await fetchData();
+        const result = processData(rawData); // Call regular function
+        output.textContent = result;
+        console.log(result);
+      } catch (error) {
+        output.textContent = error;
+        console.error("Caught Error:", error);
+      }
+    }
+  </script>
+</body>
+</html>

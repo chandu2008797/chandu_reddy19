@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Promise Example with Number</title>
+</head>
+<body>
+  <h2>Check Console for Output</h2>
+
+  <script>
+    const myPromise = new Promise((resolve, reject) => {
+      const success = true;
+      const number = 42;
+
+      success
+        ? resolve(`✅ Promise resolved successfully with number: ${number}`)
+        : reject("❌ Promise was rejected!");
+    });
+
+    myPromise
+      .then(result => {
+        console.log(result);
+        alert(result);
+        const extractedNumber = parseInt(result.match(/\d+/)[0]);
+        console.log("Extracted number + 10 =", extractedNumber + 10);
+      })
+      .catch(error => {
+        console.log(error);
+        alert(error);
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!Doctype html>
+<html>
+<head>
+<script>
+fetch('https://fakestoreapi.com/products/1', {
+ method: 'GET'
+})
+ 
+x.then(response => response.json())
+.then(data=>console.log(data))
+.catch(error => console.error('Error:', error));
+</script>
+</body>
+</html>

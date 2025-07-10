@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="show()">Show</button>
+  <p id="out"></p>
+
+  <script>
+    class Animal {
+      constructor(name) {
+        this.name = name;
+      }
+      speak() {
+        return {this.name};
+      }
+    }
+
+    class Dog extends Animal {
+      speak() {
+        return {this.name};
+      }
+    }
+
+    function show() {
+      const d = new Dog("Max");
+      document.getElementById("out").innerText = d.speak();
+    }
+  </script>
+</body>
+</html>

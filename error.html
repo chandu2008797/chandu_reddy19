@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Async/Await with Error Handling</title>
+</head>
+<body>
+  <h2>Async/Await with Error Handling</h2>
+  <button onclick="getData()">Fetch Data</button>
+  <p id="output">Click the button to fetch data...</p>
+
+  <script>
+    // Simulated async function with success/failure toggle
+    function fetchData() {
+      return new Promise((resolve, reject) => {
+        const success = Math.random() > 0.5; // Randomly succeed or fail
+        setTimeout(() => {
+          if (success) {
+            resolve("✅ Data fetched successfully!");
+          } else {
+            reject("❌ Failed to fetch data.");
+          }
+        }, 2000);
+      });
+    }
+
+    // Async function with error handling
+    async function getData() {
+      const output = document.getElementById("output");
+      output.textContent = "⏳ Fetching data...";
+      try {
+        const result = await fetchData();
+        output.textContent = result;
+        console.log(result);
+      } catch (error) {
+        output.textContent = error;
+        console.error("Error:", error);
+      } finally {
+        console.log("✅ Request completed (success or failure).");
+      }
+    }
+  </script>
+</body>
+</html>
